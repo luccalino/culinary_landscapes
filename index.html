@@ -1,4 +1,4 @@
-<!-- Code from d3-graph-gallery.com -->
+<!-- Code from d3-graph-gallery.com source: https://www.d3-graph-gallery.com/graph/scatter_grouped_highlight.html --> 
 <!DOCTYPE html>
 <meta charset="utf-8">
 
@@ -25,7 +25,7 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv("https://raw.githubusercontent.com/luccalino/d3.js/master/data.csv", function(data) {
+d3.csv("data 2.csv", function(data) {
 
   // Add X axis
   var x = d3.scaleLinear()
@@ -44,26 +44,26 @@ d3.csv("https://raw.githubusercontent.com/luccalino/d3.js/master/data.csv", func
 
   // Color scale: give me a specie name, I return a color
   var color = d3.scaleOrdinal()
-    .domain(["setosa", "versicolor", "virginica" ])
-    .range([ "#440154ff", "#21908dff", "#fde725ff"])
+    .domain(["Italian", "French", "German", "Chinese", "Spanish", "Portuguese", "Japanese", "Swiss", "Other"])
+    .range([ "#440154ff", "#21908dff", "#fde725ff", "#fde725ff", "#fde725ff", "#fde725ff", "#fde725ff", "#fde725ff", "#fde725ff"])
 
 
   // Highlight the specie that is hovered
   var highlight = function(d){
 
-    selected_specie = d.Species
+    selected_specie = d.cuisine_1
 
     d3.selectAll(".dot")
       .transition()
       .duration(200)
       .style("fill", "lightgrey")
-      .attr("r", 3)
+      .attr("r", 0.1)
 
     d3.selectAll("." + selected_specie)
       .transition()
       .duration(200)
       .style("fill", color(selected_specie))
-      .attr("r", 7)
+      .attr("r", 1)
   }
 
   // Highlight the specie that is hovered
@@ -72,7 +72,7 @@ d3.csv("https://raw.githubusercontent.com/luccalino/d3.js/master/data.csv", func
       .transition()
       .duration(200)
       .style("fill", "lightgrey")
-      .attr("r", 5 )
+      .attr("r", 0.5 )
   }
 
   // Add dots
@@ -81,11 +81,11 @@ d3.csv("https://raw.githubusercontent.com/luccalino/d3.js/master/data.csv", func
     .data(data)
     .enter()
     .append("circle")
-      .attr("class", function (d) { return "dot " + d.Species } )
-      .attr("cx", function (d) { return x(d.Sepal_Length); } )
-      .attr("cy", function (d) { return y(d.Petal_Length); } )
-      .attr("r", 5)
-      .style("fill", function (d) { return color(d.Species) } )
+      .attr("class", function (d) { return "dot " + d.cuisine_1 } )
+      .attr("cx", function (d) { return x(d.lon); } )
+      .attr("cy", function (d) { return y(d.lat); } )
+      .attr("r", 0.5)
+      .style("fill", function (d) { return color(d.cuisine_1) } )
     .on("mouseover", highlight)
     .on("mouseleave", doNotHighlight )
 
