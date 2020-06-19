@@ -46,7 +46,7 @@ d3.csv("data 2.csv", function(data) {
     .domain([35.71, 55.31])
     .range([ height, 0]);
   svg.append("g")
-    .call(d3.axisLeft(y));
+
 
   // Color scale: give me a cuisine name, I return a color
   var color = d3.scaleOrdinal()
