@@ -1,10 +1,29 @@
 <!-- Code from d3-graph-gallery.com source: https://www.d3-graph-gallery.com/graph/scatter_grouped_highlight.html --> 
 <!DOCTYPE html>
-<meta charset="utf-8">
-
-<!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.js"></script>
-
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <style>
+        h1 {
+            color: blue;
+            font-family: verdana;
+            font-size: 300%;
+            }
+        p  {
+            color: red;
+            font-family: courier;
+            font-size: 160%;
+            }
+    </style>
+    
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    
+</head>
+    
+<body>
+    
 <!-- Create a div where the graph will take place -->
 <div style="margin: auto; width: 99%; border: 1px solid #0f4c81;" id="my_dataviz">
     <img src="https://i.imgur.com/fXUIBfi.gif" alt="Graph will render here."/>
@@ -94,3 +113,6 @@ d3.csv("data 2.csv", function(data) {
 })
 
 </script>
+    
+</body>    
+</html>
