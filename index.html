@@ -11,7 +11,7 @@
 <script>
 
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 30, left: 60},
+var margin = {top: 10, right: 10, bottom: 10, left: 10},
     width = 1000 - margin.left - margin.right,
     height = 1000 - margin.top - margin.bottom;
 
@@ -29,7 +29,7 @@ d3.csv("data 2.csv", function(data) {
 
   // Add X axis
   var x = d3.scaleLinear()
-    .domain([-9.51, 18.66])
+    .domain([-9.21, 18.96])
     .range([ 0, width ]);
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
@@ -37,21 +37,21 @@ d3.csv("data 2.csv", function(data) {
 
   // Add Y axis
   var y = d3.scaleLinear()
-    .domain([36.01, 55.01])
+    .domain([35.71, 55.31])
     .range([ height, 0]);
   svg.append("g")
     .call(d3.axisLeft(y));
 
-  // Color scale: give me a specie name, I return a color
+  // Color scale: give me a cuisine name, I return a color
   var color = d3.scaleOrdinal()
     .domain(["Italian", "French", "German", "Chinese", "Spanish", "Portuguese", "Japanese", "Swiss", "Other"])
-    .range([ "#440154ff", "#21908dff", "#fde725ff", "#fde725ff", "#fde725ff", "#fde725ff", "#fde725ff", "#fde725ff", "#fde725ff"])
+    .range([ "#7fffd4", "#00B2CA", "#7DCFB6", "#0f4c81", "#d2b49c", "#f69b97", "#f28500", "#f8e8a6", "#581d22"])
 
 
-  // Highlight the specie that is hovered
+  // Highlight the cuisine that is hovered
   var highlight = function(d){
 
-    selected_specie = d.cuisine_1
+    selected_cuisine = d.cuisine_1
 
     d3.selectAll(".dot")
       .transition()
@@ -59,14 +59,14 @@ d3.csv("data 2.csv", function(data) {
       .style("fill", "lightgrey")
       .attr("r", 0.1)
 
-    d3.selectAll("." + selected_specie)
+    d3.selectAll("." + selected_cuisine)
       .transition()
       .duration(200)
-      .style("fill", color(selected_specie))
+      .style("fill", color(selected_cuisine))
       .attr("r", 1)
   }
 
-  // Highlight the specie that is hovered
+  // Highlight the cuisine that is hovered
   var doNotHighlight = function(){
     d3.selectAll(".dot")
       .transition()
