@@ -7,14 +7,6 @@
     <!-- Load loader stuff -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
-
-	// Wait for window load
-    <script>
-	$(window).load(function() {
-		// Animate loader off screen
-		$(".se-pre-con").fadeOut("slow");;
-	});
-    </script>
     
     <style>
         .no-js #loader { display: none;  }
@@ -38,7 +30,14 @@
 <body>
    
 <!-- Loader gif -->    
-<div class="se-pre-con"></div>    
+<div class="se-pre-con"></div>  
+	
+<script>
+	$(window).load(function() {
+	// Animate loader off screen
+	$(".se-pre-con").fadeOut("slow");;
+	});
+</script>	
     
 <!-- Create a div where the graph will take place -->
 <div style="display: inline-block; margin: 0 auto; width: 99%; border: 1px solid #0f4c81;" id="my_dataviz"></div>
